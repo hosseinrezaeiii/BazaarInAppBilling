@@ -28,9 +28,12 @@
 من فقط در اینجا توضیحاتی از عملکرد برنامه به شما میدم و جزئیات برنامه را میتوانید در وبسایت مارکت بازار مطالعه نمایید
 <br><br>
 اول باید فایل هایی که از طرف بازار معرفی شده را وارد پروژه خود کنید و مجوز زیر را در مانیفست برنامه خود قرار دهید
-<br>
-<code>android:name="com.farsitel.bazaar.permission.PAY_THROUGH_BAZAAR"</code>
-<br>
+<br></strong></div>
+```java
+<uses-permission android:name="com.farsitel.bazaar.permission.PAY_THROUGH_BAZAAR"></uses-permission>
+```
+<br><div lang="fa" dir="rtl">
+<p><strong>
 بعد از برنامه خود خروجی بگیرید و در پنل کاربری خود در بازار آپلود کنید تا قسمت پرداخت درون برنامه ای باز شود.
 <>
 وارد شوید و محصولات خود را ثبت کنید..<br> <a href="http://pardakht.cafebazaar.ir/doc/billing-admin/?l=fa">آموزش ثبت محصول</a>
