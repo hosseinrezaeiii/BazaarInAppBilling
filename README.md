@@ -32,7 +32,7 @@
 ```java
 <uses-permission android:name="com.farsitel.bazaar.permission.PAY_THROUGH_BAZAAR"></uses-permission>
 ```
-<br><div lang="fa" dir="rtl">
+<div lang="fa" dir="rtl">
 <p><strong>
 بعد از برنامه خود خروجی بگیرید و در پنل کاربری خود در بازار آپلود کنید تا قسمت پرداخت درون برنامه ای باز شود.
 <>
