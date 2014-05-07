@@ -42,7 +42,7 @@
 <br>در بالای متد <code>onCreate</code> شما باید شناسه کالا خود را در این قسمت قرار دهید <code>static final String SKU_PREMIUM = "";</code><br>
 همچنین باید در داخل متد  <code>onCreate</code> کلید عمومی برنامه را در این قسمت قرار دهید <code>String base64EncodedPublicKey = ""</code><br>
 در آغاز ورود به اکتیویتی <code>OnlinePremium.java</code> دیالوگی ظاهر میشه که بعد از شناسایی کاربر از premium بودن یا نه ناپدید میشه و نتیجه را در قالب یک <code>Toast</code> نمایش میدهد.<br><br>
-با آغاز اکتیویتی کد زیر اجرا میشود که برای جستجو premium بودن میباشد.<br>
+
 </p></strong></div>
 
 ```java
@@ -54,8 +54,8 @@
 ```
 <br><div lang="fa" dir="rtl">
 <p><strong>
-
-اگر کاربر premium باشد دیالوگ loading مخفی میشه <code>dialog.hide()</code> متد <code>UpdateUi()</code> اجرا میشه و محتوای این متد را در باتن قرار میده.<br>
+با آغاز اکتیویتی کد زیر اجرا میشود که برای جستجو premium بودن میباشد.<br>
+ر کاربر premium باشد دیالوگ loading مخفی میشه <code>dialog.hide()</code> متد <code>UpdateUi()</code> اجرا میشه و محتوای این متد را در باتن قرار میده.<br>
 اگر کاربر premium نباشه هم منتظر لمس کردن کاربر بر روی دکمه میشه که متد <code>onOnlineUpgradeAppButtonClicked</code> را فراخوانی کند.
 </p></strong></div>
 ```java
