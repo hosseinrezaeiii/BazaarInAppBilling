@@ -171,7 +171,51 @@ public void updateUi() {
     }
  }
 ```
-
+<br><div lang="fa" dir="rtl">
+<p><strong>
+در کلاس <code>CustomPremium</code> قضیه طور دیگری است.<br>
+حتما برنامه هایی را دیده اید که بعد از نصب در حین کار کردن ناگهان دیلوگی ظاهر میشود و میگوید برای استفاده از این قسمت حساب کاربری خود را ارتقا دهید و شما را به یک صفحه پرداخت هدایت میکند و شما بعد از پرداخت مبلغ و ارتقا حساب میبینید و بعضی قسمت های غیر فعال در برنامه فعال شذه است.<br>
+در این قسمت از برنامه ما به شما یاد میدهیم که یک صفحه برداخت درست کنید و در قسمتی از برنامه در کلاسی دیگر قسمتی را فعال کنید.<br>
+برای این منظور ما باید کلاس پرداخت خود را به صورت سراسری تعریف کنید تا بتوانیم در هر جای برنامه ازش استفاده کنیم.<br>
+در  <code>MainActivity</code> دکمه ای به نام  <code>custom premium</code> وجود دارد که با کلیک بر روی آن به کلاس  <code>CustomPremium</code> هدایت میشوید.<br>
+بعد دو دکمه میبینید که اولی غیر فعال و دومی به نام purchase page است که شما را به صفحه پرداخت هدایت میکند.<br>
+با کلک روی آن به کلاس <code>PurchaseApp</code> میروید که دکمه ای به نام buy برای خرید و ارتقا وجود دارد.<br>
+این کلاس هم مانند کلاس <code>Premium</code> است فقط با این تفاوت که متغییر <code>mIsPremium</code> از نوع <code>static</code> تعریف شده است.
+</p></strong></div>
+```java
+public static boolean mIsPremium2 = false;
+```
+<br><div lang="fa" dir="rtl">
+<p><strong>
+بعد بقیه کدها همانند کلاس <code>Premium</code> بوده و پرداخت و ذخیره پرداخت انجام میشود<br>
+در کلاس  <code>CustomPremium</code> متد  <code>updatebtn()</code> را به شکل زیر نوشتیم که متغییر <code>mIsPremium2</code> را از کلاس <code>PurchaseApp</code> دریافت کند.<br>
+</p></strong></div>
+```java
+public void updatebtn() {
+	btn5 = (Button) findViewById(R.id.Activebtn);
+		
+	if (PurchaseApp.mIsPremium2) {
+		btn5.setEnabled(true);
+		btn5.setBackgroundResource(R.drawable.button_normal);
+		btn5.setOnClickListener(new OnClickListener() {				
+			@Override
+			public void onClick(View arg0) {
+			Toast.makeText(getApplicationContext(), R.string.active, Toast.LENGTH_SHORT).show();
+			}
+		});	
+			
+		findViewById(R.id.custombtn).setEnabled(false);
+		
+	}else {
+		return;
+	}
+     }
+```
+<br><div lang="fa" dir="rtl">
+<p><strong>
+بعد از پرداخت باید یک بار از برنامه خارج و دوباره وارد شوید تا تغییرات انجام شود<br>
+بعد از ورود مجدد در کلاس <code>CustomPremium</code> میبینید که دکمه اول فعال شده و دکمه دوم غیرفعالشده است 
+</p></strong></div>
 <br><div lang="fa" dir="rtl">
 <h2>در پایان</h2>
 <p><strong>
