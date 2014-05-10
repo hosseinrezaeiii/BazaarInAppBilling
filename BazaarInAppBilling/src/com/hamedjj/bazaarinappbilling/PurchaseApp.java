@@ -18,9 +18,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Premium extends Activity{
+public class PurchaseApp extends Activity {
 	
-	Button btn2;
+	Button btn3;
 	
 	public ProgressDialog dialog;
 	
@@ -28,16 +28,16 @@ public class Premium extends Activity{
 	
 	private String PACKAGENAME = "" ;
 	
-	final String KEY = "PERIMIUM" ;
+	final String KEY = "PERIMIUM2" ;
 	
 	// Debug tag, for logging
-	static final String TAG = "savedPremium";
+	static final String TAG = "CustomPremium";
 
 	// SKUs for our products: the premium upgrade (non-consumable)
 	static final String SKU_PREMIUM = "online";
 
 	// Does the user have the premium upgrade?
-	boolean mIsPremium1 = false;
+	public static boolean mIsPremium2 = false;
 
 	// (arbitrary) request code for the purchase flow
 	static final int RC_REQUEST = 10001;
@@ -47,15 +47,17 @@ public class Premium extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.premium);
-		btn2 = (Button) findViewById(R.id.normalbtn);
+		setContentView(R.layout.purchase);
+		
+		btn3 = (Button) findViewById(R.id.buy);
 		// load your setting that are you premium or not?
 		preferences = getSharedPreferences(PACKAGENAME,Context.MODE_PRIVATE);
 		PACKAGENAME = getClass().getName();
 		Log.e("TAG", PACKAGENAME);
-		mIsPremium1 = preferences.getBoolean(KEY, false);
-			if (mIsPremium1 == true) {
+		mIsPremium2 = preferences.getBoolean(KEY, false);
+			if (mIsPremium2 == true) {
 				updateUi();
 				return;
 			}
@@ -65,9 +67,8 @@ public class Premium extends Activity{
 			dialog.setMessage("loading...");
 	        dialog.setCancelable(false);
 	        dialog.setInverseBackgroundForced(false);
-	        dialog.show();			
-	    
-						
+	        dialog.show();		
+		
 		String base64EncodedPublicKey = "MIHNMA0GCSqGSIb3DQEBAQUAA4G7ADCBtwKBrwDGhl8/QU3vPjgmTutAbItCBpdwwgFWSAFvzM/OOXVSMHaeH9fjRIxa3aLXVAfuoRJ3Q1ynbQL1Dc2hAvlTAgEeRFNmVkkjypzhZxK3O18wIYJiNleLd/pXZyWaoHeQB6s3eH3KB8uDn2TdZoYzmXxZkvMoDW2db3mT1NmPxJYm+xF7AN/p/Sr9YqEXpIpzsXbe6T30seUHmPDdM4r7h/r6hx/R/2hHvR/vnN0i6w8CAwEAAQ==";
 		// You can find it in your Bazaar console, in the Dealers section. 
 		// It is recommended to add more security than just pasting it in your source code;
@@ -101,30 +102,30 @@ public class Premium extends Activity{
 	        else {
 	            Log.d(TAG, "Query inventory was successful.");
 	            // does the user have the premium upgrade?
-	            mIsPremium1 = inventory.hasPurchase(SKU_PREMIUM);
+	            mIsPremium2 = inventory.hasPurchase(SKU_PREMIUM);
 
 	            // update UI accordingly
 
-	            Log.d(TAG, "User is " + (mIsPremium1 ? "PREMIUM" : "NOT PREMIUM"));
+	            Log.d(TAG, "User is " + (mIsPremium2 ? "PREMIUM" : "NOT PREMIUM"));
 	        }
 	        dialog.hide();
 	        updateUi();
-            setWaitScreen(false);
-            Toast.makeText(getApplicationContext(), mIsPremium1? R.string.premium : R.string.notpremium, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), mIsPremium2? R.string.custompremium : R.string.notpremium, Toast.LENGTH_SHORT).show();
 	        Log.d(TAG, "Initial inventory query finished; enabling main UI.");
 	        
 	    }
 	    
 	};
-
-    public void onSavedUpgradeAppButtonClicked(View arg0) {
+	
+	
+    public void onCustomPremiumAppButtonClicked(View arg0) {
         Log.d(TAG, "Upgrade button clicked; launching purchase flow for upgrade.");
         setWaitScreen(true);
         
         /* TODO: for security, generate your payload here for verification. See the comments on
          * verifyDeveloperPayload() for more info. Since this is a SAMPLE, we just use
          * an empty string, but on a production app you should carefully generate this. */
-        String payload = "gdhassdflsldaslfkahsjahsjakaasa";
+        String payload = "ahsjahsdjnsxznxbsjdjlsadjksahd";
 
         mHelper.launchPurchaseFlow(this, SKU_PREMIUM, RC_REQUEST,
                 mPurchaseFinishedListener, payload);
@@ -170,8 +171,8 @@ public class Premium extends Activity{
 	    	
 	    	 if (purchase.getSku().equals(SKU_PREMIUM)) {
 	    		 Log.d(TAG, "Purchase is premium upgrade. Congratulating user.");
-	                alert("Thank you for upgrading to premium!");
-	                mIsPremium1 = true;
+	    		 Toast.makeText(getApplicationContext(), mIsPremium2? R.string.custompremium : R.string.notpremium, Toast.LENGTH_SHORT).show();
+	                mIsPremium2 = true;
 	                updateUi();
 	                setWaitScreen(false);
 	                
@@ -187,42 +188,40 @@ public class Premium extends Activity{
 	    if (mHelper != null) mHelper.dispose();
 	    mHelper = null;
 	}
-	
-	// Update button with updateUi
-	public void updateUi() {
-		if (mIsPremium1) {
-			findViewById(R.id.normalbtn).setBackgroundResource(mIsPremium1? R.drawable.blue : null);
-			btn2.setOnClickListener(new OnClickListener() {			
-				@Override
-				public void onClick(View v) {
-					Toast.makeText(getApplicationContext(), R.string.clickpremium, Toast.LENGTH_SHORT).show();			
-				}
-			});
-			// change the mIsPremium to true
-			SharedPreferences.Editor newtask = preferences.edit();
-			newtask.putBoolean(KEY, true);
-			newtask.commit();
-		}
-}
-
-// Enables or disables the "please wait" screen.
-	void setWaitScreen(boolean set) {
-	    findViewById(R.id.screen_wait).setVisibility(set ? View.VISIBLE : View.GONE);
-	}
-	
-	void complain(String message) {
-	    Log.e(TAG, "**** testbilling Error: " + message);
-	    alert("Error: " + message);
-	}
-	
-	void alert(String message) {
-	    AlertDialog.Builder bld = new AlertDialog.Builder(this);
-	    bld.setMessage(message);
-	    bld.setNeutralButton("OK", null);
-	    Log.d(TAG, "Showing alert dialog: " + message);
-	    bld.create().show();
-
-	}	
 		
-}
+		// Update button with updateUi
+		public void updateUi() {
+			if (mIsPremium2) {
+				findViewById(R.id.buy).setBackgroundResource(R.drawable.button_normal);
+				btn3.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View arg0) {
+						Toast.makeText(getApplicationContext(), mIsPremium2? R.string.custompremium : R.string.notpremium, Toast.LENGTH_SHORT).show();
+					}
+				});
+				// change the mIsPremium2 to true
+				SharedPreferences.Editor newtask = preferences.edit();
+				newtask.putBoolean(KEY, true);
+				newtask.commit();
+			}
+		}
+		
+		// Enables or disables the "please wait" screen.
+		void setWaitScreen(boolean set) {
+		    findViewById(R.id.screen_wait).setVisibility(set ? View.VISIBLE : View.GONE);
+		}
+		
+		void complain(String message) {
+		    Log.e(TAG, "**** testbilling Error: " + message);
+		    alert("Error: " + message);
+		}
+		
+		void alert(String message) {
+		    AlertDialog.Builder bld = new AlertDialog.Builder(this);
+		    bld.setMessage(message);
+		    bld.setNeutralButton("OK", null);
+		    Log.d(TAG, "Showing alert dialog: " + message);
+		    bld.create().show();
 
+		}	
+}

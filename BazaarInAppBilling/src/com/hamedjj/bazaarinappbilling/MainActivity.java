@@ -16,6 +16,7 @@ public class MainActivity extends Activity {
 		
 		Button btn1 = (Button) findViewById(R.id.button1);
 		Button btn2 = (Button) findViewById(R.id.button2);
+		Button btn3 = (Button) findViewById(R.id.button3);
 		
 		btn1.setOnClickListener(new OnClickListener() {
 			@Override
@@ -32,6 +33,15 @@ public class MainActivity extends Activity {
 				startActivity(intent1);
 			}
 		});
+		
+		btn3.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent1 = new Intent(MainActivity.this, CustomPremium.class);
+				startActivity(intent1);
+			}
+		});
+		
 	}
 
 }

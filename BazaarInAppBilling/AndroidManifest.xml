@@ -26,6 +26,8 @@
         </activity>
         <activity android:name="com.hamedjj.bazaarinappbilling.OnlinePremium"/>
         <activity android:name="com.hamedjj.bazaarinappbilling.Premium"/>
+        <activity android:name="com.hamedjj.bazaarinappbilling.PurchaseApp"/>
+        <activity android:name="com.hamedjj.bazaarinappbilling.CustomPremium"/>
     </application>
 
 </manifest>

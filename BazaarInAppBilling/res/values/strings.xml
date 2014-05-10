@@ -8,4 +8,6 @@
 	<string name="notpremium">شما کاربر عادی هستید</string>
 	<string name="wait">در حال بررسی...</string>
 	<string name="clickpremium">شما کاربر ویژه هستید</string>
+		<string name="active">دکمه فعال شده است!</string>
+	<string name="custompremium">تبریک!شما کاربر ویژه شده اید  ... لطفا از برنامه خارج و دوباره وارد شوید</string>
 </resources>
