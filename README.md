@@ -179,7 +179,7 @@ public void updateUi() {
 برای این منظور یک کلاس پرداخت سراسری تعریف میکنیم.<br>
 در  <code>MainActivity</code> دکمه ای به نام  <code>custom premium</code> وجود دارد که با کلیک بر روی آن به کلاس  <code>CustomPremium</code> هدایت میشوید.<br>
 بعد دو دکمه میبینید که اولی غیر فعال و دومی به نام <code>purchase page</code> است که شما را به صفحه پرداخت هدایت میکند.<br>
-با کلک روی آن به کلاس <code>PurchaseApp</code> میروید که دکمه ای به نام <code>buy</code> برای خرید و ارتقا وجود دارد.<br>
+با کلیک روی آن به کلاس <code>PurchaseApp</code> میروید که دکمه ای به نام <code>buy</code> برای خرید و ارتقا وجود دارد.<br>
 این کلاس هم مانند کلاس <code>Premium</code> است فقط با این تفاوت که مغادیر متغییر <code>mIsPremium2</code> از نوع <code>static</code> تعریف شده است.
 </p></strong></div>
 ```java
