@@ -30,6 +30,13 @@ public class CustomPremium extends Activity {
 		});
 	}
 	
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+		updatebtn();
+	}
+	
 	public void updatebtn() {
 		btn5 = (Button) findViewById(R.id.Activebtn);
 		
