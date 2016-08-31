@@ -219,5 +219,5 @@ public void updatebtn() {
 </p></strong>
 <h2>نویسنده</h2>
 <p><strong>
-<img src="http://www.axgig.com/images/92193400440163114768.png" border="0" alt="hamedjj" align="middle" width="50" height="50" /> <a href="http://barnamenevis.org/member.php?290105-hamedjj">hamedjj</a>
+<img src="http://www.axgig.com/images/92193400440163114768.png" border="0" alt="hamedjj" align="middle" width="50" height="50" /> <a href="http://barnamenevis.org/member.php?290105-hamedjj">Hamed Daneshnia</a>
 </p></strong></div>
